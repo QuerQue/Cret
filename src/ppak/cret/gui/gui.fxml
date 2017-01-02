@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import ppak.cret.gui.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="662.0" maxWidth="345.0" minHeight="595.0" minWidth="345.0" prefHeight="662.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ppak.cret.gui.FrameController">
+   <children>
+      <ImageView fx:id="imageView" fitHeight="128.0" fitWidth="128.0" layoutX="109.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="58.0" fitWidth="56.0" layoutX="27.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/map.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="83.0" layoutY="185.0" text="LOCATION:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="locationName" layoutX="104.0" layoutY="209.0" text="locationName" textAlignment="RIGHT">
+         <font>
+            <Font name="Impact" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="315.0" text="temperature:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="tempValue" layoutX="98.0" layoutY="339.0" text="value" textAlignment="RIGHT">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="63.0" fitWidth="81.0" layoutX="37.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/termometer.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="237.0" layoutY="384.0" text="humidity:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="humidityValue" layoutX="252.0" layoutY="408.0" text="value">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="441.0" text="pressure:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="pressureValue" layoutX="73.0" layoutY="465.0" text="value">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="245.0" layoutY="517.0" text="clouds:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="cloudsValue" layoutX="246.0" layoutY="541.0" text="value">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="73.0" fitWidth="60.0" layoutX="173.0" layoutY="511.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/clouds.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="weatherDescription" layoutX="161.0" layoutY="247.0" text="description" textAlignment="RIGHT" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="citiesCombo" layoutX="17.0" layoutY="610.0" onAction="#citySelection" prefHeight="38.0" prefWidth="157.0" />
+      <Button layoutX="179.0" layoutY="610.0" mnemonicParsing="false" onMouseReleased="#historyClick" prefHeight="38.0" prefWidth="157.0" text="history">
+         <font>
+            <Font name="Impact" size="17.0" />
+         </font>
+         <effect>
+            <Blend />
+         </effect>
+      </Button>
+   </children>
+</Pane>

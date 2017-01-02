@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import ppak.cret.gui.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="835.0" maxWidth="1168.0" minHeight="595.0" minWidth="345.0" prefHeight="835.0" prefWidth="1168.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ppak.cret.gui.ChartFrameController">
+   <children>
+      <Label layoutX="79.0" layoutY="9.0" text="LOCATION:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="locationName" layoutX="169.0" layoutY="21.0" text="locationName">
+         <font>
+            <Font name="Impact" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="60.0" text="temperature:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="662.0" layoutY="60.0" text="pressure:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="428.0" text="humidity:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="662.0" layoutY="428.0" text="clouds:" textFill="#545454">
+         <font>
+            <Font name="Impact" size="20.0" />
+         </font>
+      </Label>
+      <BarChart fx:id="tempChart" layoutX="34.0" layoutY="85.0" prefHeight="342.0" prefWidth="550.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <BarChart fx:id="pressureChart" layoutX="584.0" layoutY="85.0" prefHeight="342.0" prefWidth="550.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <BarChart fx:id="cloudsChart" layoutX="584.0" layoutY="453.0" prefHeight="342.0" prefWidth="550.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+      <BarChart fx:id="humidityChart" layoutX="34.0" layoutY="453.0" prefHeight="342.0" prefWidth="550.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
+   </children>
+</Pane>

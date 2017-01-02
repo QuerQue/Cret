@@ -1,0 +1,83 @@
+<project name="Cret" basedir="." default="main" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+
+    <property environment="env"/>
+    <property name="src.dir"     value="src"/>
+    <property name="build.dir"   value="build"/>
+    <property name="database_src.dir"     value="database"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="res_src.dir"     value="resources"/>
+    <property name="gui_src.dir"     value="${src.dir}/ppak/cret/gui"/>
+    <property name="gui.dir"     value="${classes.dir}/ppak/cret/gui"/>
+    <property name="res_gui_src.dir"     value="${src.dir}/ppak/cret/gui/resources"/>
+    <property name="res_gui.dir" value="${classes.dir}/ppak/cret/gui/resources"/>
+    <property name="jar.dir"     value="${build.dir}/jar"/>
+    <property name="database.dir" value="${jar.dir}/database"/>
+    <property name="res.dir" value="${jar.dir}/resources"/>
+
+
+    <property name="main-class"  value="ppak.cret.gui.Main"/>
+
+    <path id="classpath">
+        <fileset dir="${basedir}" includes="java-json.jar"/>
+        <fileset dir="${basedir}" includes="sqlite-jdbc-3.8.11.2.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}" failonerror="false"/>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${res.dir}"/>
+        <copy todir="${res.dir}"><fileset file="${res_src.dir}/*.png"/></copy>
+        <mkdir dir="${res_gui.dir}"/>
+        <copy todir="${res_gui.dir}"><fileset file="${res_gui_src.dir}/*.png"/></copy>
+        <copy todir="${gui.dir}"><fileset file="${gui_src.dir}/*.fxml"/></copy>
+        <mkdir dir="${database.dir}"/>
+        <copy todir="${database.dir}"><fileset file="${database_src.dir}/*.db"/></copy>
+        <mkdir dir="${jar.dir}"/>
+    </target>
+
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+
+    </target>
+
+    <target name="jar" depends="compile">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="${env.JAVA_HOME}/lib/ant-javafx.jar" />
+        <fx:resources id="res">
+            <fx:fileset dir="${basedir}" includes="*.jar"/>
+        </fx:resources>
+        <fx:application id="cret"
+                        name="Cret"
+                        mainClass="ppak.cret.gui.Main"/>
+        <fx:jar destfile="${jar.dir}/${ant.project.name}.jar">
+            <fx:resources refid="res"/>
+            <fx:application refid="cret"/>
+            <!-- The target/classes folder which contains all resources and class files -->
+            <fileset dir="${classes.dir}"/>
+        </fx:jar>
+        <fx:deploy outdir="${jar.dir}" outfile="Cret"
+                   offlineAllowed="false">
+            <fx:info title="Cret"/>
+            <fx:application refid="cret"/>
+            <fx:resources refid="res"/>
+        </fx:deploy>
+    </target>
+
+
+    <target name="run" depends="jar">
+        <java fork="true" classname="${main-class}">
+            <classpath>
+                <path refid="classpath"/>
+                <path location="${jar.dir}/${ant.project.name}.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="main" depends="jar,run"/>
+
+</project>
